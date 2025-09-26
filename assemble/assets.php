@@ -1,0 +1,6 @@
+<?php
+ini_set('display_errors',1);error_reporting(E_ALL);
+class G{private $d='assets/';private $v=[];public function __construct(){if(!is_dir($this->d))mkdir($this->d,0777,true);$this->v=$this->scan();}private function scan(){$r=[];foreach(glob($this->d.'*') as $f){$r[basename($f)]=$f;}return$r;}public function u($f,$n=null){$n=$n??basename($f);$t=$this->d.$n;if(move_uploaded_file($f,$t))$this->v[$n]=$t;return $t;}public function g($n){return $this->v[$n]??null;}public function d($n){if(isset($this->v[$n])){unlink($this->v[$n]);unset($this->v[$n]);return true;}return false;}public function l(){return array_keys($this->v);}public function r($n,$c){if(isset($this->v[$n]))return file_put_contents($this->v[$n],$c)!==false;return false;}public function s($n){return isset($this->v[$n])?filesize($this->v[$n]):0;}}
+$G=new G();
+switch($_GET['act']??''){case'u':if(isset($_FILES['f'])){echo $G->u($_FILES['f']['tmp_name'],$_FILES['f']['name']);}break;case'g':echo json_encode($G->g($_GET['n']??''));break;case'd':echo $G->d($_GET['n']??'')?'1':'0';break;case'l':echo json_encode($G->l());break;case'r':echo $G->r($_GET['n']??'',$_POST['c']??'')?'1':'0';break;case's':echo $G->s($_GET['n']??'');break;default:echo 'invalid';}
+?>
