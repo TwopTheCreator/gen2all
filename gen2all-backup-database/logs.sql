@@ -1,0 +1,8 @@
+CREATE TABLE logs (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    event_type TEXT NOT NULL,
+    message TEXT NOT NULL,
+    user_id INTEGER,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY(user_id) REFERENCES users(id)
+);
