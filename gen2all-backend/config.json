@@ -1,0 +1,36 @@
+{
+  "database": {
+    "type": "sqlite",
+    "path": "gen2all.db",
+    "host": "localhost",
+    "port": 5432,
+    "username": "",
+    "password": ""
+  },
+  "tokenizer": {
+    "type": "word",
+    "max_tokens": 1000,
+    "vocab_size": 10000,
+    "special_tokens": {
+      "pad": "[PAD]",
+      "unk": "[UNK]",
+      "start": "[START]",
+      "end": "[END]"
+    },
+    "case_sensitive": false
+  },
+  "gui": {
+    "theme": "dark",
+    "width": 1200,
+    "height": 800,
+    "font_family": "Arial",
+    "font_size": 12
+  },
+  "api": {
+    "host": "0.0.0.0",
+    "port": 5000,
+    "debug": false,
+    "cors_enabled": true
+  },
+  "custom": {}
+}
